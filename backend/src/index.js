@@ -3,6 +3,8 @@ const express = require('express');
 // importando biblioteca para dar acesso node a base de dados Mongo
 const mongoose = require('mongoose');
 
+const cors = require('cors');
+
 //importar rotas
 const routes = require('./routes');
 
@@ -15,6 +17,7 @@ mongoose.connect('mongodb+srv://talita:123@cluster0-ic2ml.mongodb.net/omnistack?
     useUnifiedTopology: true,
 }); // string de conexão com o Mongodb
 
+app.use(cors()) ; // cors extensão que remove o bloqueio do node para acesso através de outras portas
 // rotas da aplicação
 app.use(express.json());
 app.use(routes);
